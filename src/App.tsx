@@ -1,7 +1,8 @@
 import { createSignal } from "solid-js";
+import "./App.css";
+import {promptHandler} from "./lib/promptHandler.ts";
 import logo from "./assets/logo.svg";
 import { invoke } from "@tauri-apps/api/core";
-import "./App.css";
 
 function App() {
   const [promptMsg, setPromptMsg] = createSignal("");
@@ -9,7 +10,7 @@ function App() {
 
   async function prompt() {
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setPromptMsg(await invoke("greet", { name: name() }));
+    setPromptMsg (await promptHandler(name()));
   }
 
   return (
