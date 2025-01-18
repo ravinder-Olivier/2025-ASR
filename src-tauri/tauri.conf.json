@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "asr25",
+  "productName": "asr",
   "version": "0.1.0",
-  "identifier": "com.asr25.app",
+  "identifier": "com.asr.app",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "asr25",
+        "title": "asr",
         "width": 800,
         "height": 600
       }
