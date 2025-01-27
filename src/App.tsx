@@ -4,6 +4,7 @@ import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 import promptHandler from "./lib/promptHandler"
 
+
 function App() {
   const [selectedValue, setSelectedValue] = useState('option1');
   const [greetMsg, setGreetMsg] = useState("");
@@ -18,8 +19,8 @@ function App() {
     };
 
 
-    return (
 
+    return (
     <main className="container">
       <h1>asr25</h1>
         <form
@@ -41,7 +42,7 @@ function App() {
                     checked={selectedValue === 'option1'}
                     onChange={handleChange}
                 />
-                Option 1
+                Social S
             </label>
             <label>
                 <input
@@ -50,7 +51,7 @@ function App() {
                     checked={selectedValue === 'option2'}
                     onChange={handleChange}
                 />
-                Option 2
+                Visual S
             </label>
             <button type="submit">Greet</button>
         </form>

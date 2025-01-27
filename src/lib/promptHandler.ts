@@ -1,4 +1,18 @@
-export default async function (text, check) {
+import genText from "./genText"
 
-    return(text+check)
+export default async function promptHandler (prompt: string, type: boolean) {
+    return await genText(prompt,tester(type))
+}
+
+function tester (check) {
+    if (check == 'true') {
+        return true
+    }
+    else if (check == false) {
+        return false
+    }
+    else {
+        return false
+    }
+
 }
