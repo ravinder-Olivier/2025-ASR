@@ -9,6 +9,7 @@ const Application: React.FC = () => {
   const [darkTheme, setDarkTheme] = useState(true);
   const [versions, setVersions] = useState<Record<string, string>>({});
   const [prompt, setPrompt] = useState('');
+  const [msg, setMsg] = useState('');
   /**
    * On component mount
    */
@@ -48,10 +49,10 @@ const Application: React.FC = () => {
     setDarkTheme(!darkTheme);
   }
 
-  const handleSubmit = (event:any) => {
+  const handleSubmit = async (event:any) => {
     event.preventDefault(); // Prevents default form submission behavior
     console.log('Submitted prompt:', prompt);
-    displayMsg(await promptHandler(prompt))
+    setMsg(String((await promptHandler(prompt))))
     // Perform any other actions, like sending data to a server
   };
 
@@ -71,6 +72,7 @@ const Application: React.FC = () => {
           </label>
           <button type="submit">Submit</button>
         </form>
+        <p>{msg}</p>{" "}
       </div>
 
     </div>

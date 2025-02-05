@@ -30,6 +30,7 @@
     "@electron-forge/maker-squirrel": "7.4.0",
     "@electron-forge/maker-zip": "7.4.0",
     "@electron-forge/plugin-webpack": "7.4.0",
+    "@electron/packager": "^18.3.6",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "@types/node": "^20.14.11",
@@ -50,6 +51,7 @@
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "node-loader": "^2.0.0",
+    "react-error-overlay": "6.0.9",
     "react-refresh": "^0.14.2",
     "sass": "^1.77.8",
     "sass-loader": "^14.2.1",
@@ -59,10 +61,14 @@
     "webpack": "^5.93.0"
   },
   "dependencies": {
+    "canvas": "^3.1.0",
+    "dotenv": "^16.4.7",
+    "dotenv-webpack": "^8.1.0",
     "electron-squirrel-startup": "^1.0.1",
     "openai": "^4.81.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.5"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

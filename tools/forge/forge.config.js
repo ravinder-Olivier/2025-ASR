@@ -8,9 +8,9 @@ module.exports = {
     // Create asar archive for main, renderer process files
     asar: true,
     // Set executable name
-    executableName: 'ERWT',
+    executableName: 'ASR2025',
     // Set application copyright
-    appCopyright: '© 2021-2024 Codesbiome, Guasam',
+    appCopyright: '© 2024-2025 Ravinder Olivier Singh Dadiala',
     // Set application icon
     icon: path.resolve('assets/images/appIcon.ico'),
   },

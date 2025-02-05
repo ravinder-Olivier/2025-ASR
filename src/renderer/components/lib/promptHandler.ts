@@ -13,11 +13,14 @@ limitations under the License.
 */
 import OpenAI from 'openai';
 
-const client = new OpenAI({
-    apiKey: process.env[process.env.REACT_APP_OPENAI], // This is the default and can be omitted
-});
 
 export default async function promptHandler (prompt:string) {
+    const client = new OpenAI({
+        apiKey: process.env.OPENAI,
+        dangerouslyAllowBrowser: true
+        // This is the default and can be omitted
+    });
+
     const chatCompletion = await client.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
         model: 'gpt-4o',

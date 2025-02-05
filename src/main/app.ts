@@ -1,5 +1,3 @@
-import { app, BrowserWindow } from 'electron';
-import { createAppWindow } from './appWindow';
 /*
 Copyright 2025 Ravinder Olivier Singh Dadiala
 
@@ -13,6 +11,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
+import { app, BrowserWindow } from 'electron';
+import 'dotenv/config'
+import { createAppWindow } from './appWindow';
+
 
 /** Handle creating/removing shortcuts on Windows when installing/uninstalling. */
 if (require('electron-squirrel-startup')) {
