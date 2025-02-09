@@ -22,7 +22,7 @@ export default async function promptHandler (prompt:string) {
     });
 
     const chatCompletion = await client.chat.completions.create({
-        messages: [{ role: 'user', content: prompt }],
+        messages: [{ role: 'system', content: prompt }],
         model: 'gpt-4o',
     });
 }
