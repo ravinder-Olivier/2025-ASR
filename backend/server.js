@@ -2,14 +2,45 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const fs = require('fs');
+const fs = require("fs");
+var bodyParser = require("body-parser");
 
 const app = express();
 const port = 5000;
 const filepath = "./public/db.json";
+const OpenAI = require("openai");
 
 app.use(cors());
 app.use(express.static("public"));
+app.use(bodyParser.json()); // Use body-parser middleware to parse JSON requests
+
+// Initialize OpenAI API
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI,
+});
+
+// Handle ChatGPT request
+app.post("/chatgpt", async (req, res) => {
+  const { prompt } = req.body; // No need for 'await' here, as it's synchronous
+
+  if (!prompt) {
+    return res.status(400).send("No prompt provided");
+  }
+
+  try {
+    // Send request to OpenAI's API
+    const response = await openai.chat.completions.create({
+      model: "gpt-4", // Ensure the model name is correct
+      messages: [{ role: "user", content: prompt }],
+    });
+
+    // Send response from OpenAI back to frontend
+    res.status(200).json({ message: response.choices[0].message.content });
+  } catch (error) {
+    console.error("Error calling OpenAI:", error);
+    res.status(500).send("Error generating response from ChatGPT");
+  }
+});
 
 // Set up Multer for image uploads
 const upload = multer({
@@ -22,12 +53,12 @@ let images = [];
 
 // Load images from the file when the server starts
 const loadImages = () => {
-  fs.readFile(filepath, 'utf8', (err, data) => {
+  fs.readFile(filepath, "utf8", (err, data) => {
     if (!err && data) {
       try {
         images = JSON.parse(data);
       } catch (err) {
-        console.error('Failed to parse JSON:', err);
+        console.error("Failed to parse JSON:", err);
       }
     }
   });
@@ -37,9 +68,9 @@ const loadImages = () => {
 const saveImages = () => {
   fs.writeFile(filepath, JSON.stringify(images, null, 2), (err) => {
     if (err) {
-      console.error('Failed to save images:', err);
+      console.error("Failed to save images:", err);
     } else {
-      console.log('Images saved to file');
+      console.log("Images saved to file");
     }
   });
 };

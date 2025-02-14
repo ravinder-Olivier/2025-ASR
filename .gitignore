@@ -24,3 +24,9 @@ yarn-error.log*
 
 # uploads
 /public/uploads/*
+
+
+# backend
+/backend/node_modules
+/backend/.env.local
+**/node_modules
