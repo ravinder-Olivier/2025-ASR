@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
-var bodyParser = require("body-parser");
+const  bodyParser = require("body-parser");
 
 const app = express();
 const port = 5000;
@@ -41,6 +41,10 @@ app.post("/chatgpt", async (req, res) => {
     res.status(500).send("Error generating response from ChatGPT");
   }
 });
+
+
+// image generator here
+
 
 // Set up Multer for image uploads
 const upload = multer({
