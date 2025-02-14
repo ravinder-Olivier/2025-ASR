@@ -7,9 +7,6 @@ function App() {
   const [file, setFile] = useState(null);
   const [tags, setTags] = useState("");
   const [images, setImages] = useState([]);
-  const [selectedValue, setSelectedValue] = useState('option1');
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
   const [chatGPTResponse, setChatGPTResponse] = useState("");
   const [prompt, setPrompt] = useState("");
 
@@ -32,15 +29,6 @@ function App() {
   const handleTagsChange = (e) => {
     setTags(e.target.value);
   };
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await promptHandler(name, selectedValue));
-  }
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-
 
 
   const uploadImage = async () => {
