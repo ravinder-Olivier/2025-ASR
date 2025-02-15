@@ -46,16 +46,15 @@ app.post("/chatgpt", async (req, res) => {
 // image generator here
 
 
-// Set up Multer for image uploads
+
 const upload = multer({
   dest: "./public/uploads/",
   limits: { fileSize: 10 * 1024 * 1024 }, // Max file size: 10MB
 });
 
-// Simple in-memory array to store image data (for now, instead of a database)
 let images = [];
 
-// Load images from the file when the server starts
+
 const loadImages = () => {
   fs.readFile(filepath, "utf8", (err, data) => {
     if (!err && data) {
@@ -68,7 +67,7 @@ const loadImages = () => {
   });
 };
 
-// Save images array to a file
+
 const saveImages = () => {
   fs.writeFile(filepath, JSON.stringify(images, null, 2), (err) => {
     if (err) {

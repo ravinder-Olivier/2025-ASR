@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Two Panel Vertical",
+    "panels": [
+      { "x": 0, "y": 0, "width": 800, "height": 300 },
+      { "x": 0, "y": 300, "width": 800, "height": 300 }
+    ],
+    "textPositions": [
+      { "x": 20, "y": 20 },
+      { "x": 20, "y": 320 }
+    ]
+  },
+  {
+    "name": "Four Panel Grid",
+    "panels": [
+      { "x": 0, "y": 0, "width": 400, "height": 300 },
+      { "x": 400, "y": 0, "width": 400, "height": 300 },
+      { "x": 0, "y": 300, "width": 400, "height": 300 },
+      { "x": 400, "y": 300, "width": 400, "height": 300 }
+    ],
+    "textPositions": [
+      { "x": 20, "y": 20 },
+      { "x": 420, "y": 20 },
+      { "x": 20, "y": 320 },
+      { "x": 420, "y": 320 }
+    ]
+  }
+]

@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
-
 function App() {
   const [file, setFile] = useState(null);
   const [tags, setTags] = useState("");
   const [images, setImages] = useState([]);
   const [chatGPTResponse, setChatGPTResponse] = useState("");
   const [prompt, setPrompt] = useState("");
-
+  const [loading, setLoading] = useState(false); // New state for loading indicator
 
   const handleChatGPTRequest = async () => {
     if (!prompt) return;
+
+    setLoading(true); // Start loading
 
     try {
       const response = await axios.post("http://localhost:5000/chatgpt", { prompt });
       setChatGPTResponse(response.data.message); // Store response
     } catch (error) {
       console.error("Error fetching ChatGPT response:", error);
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
@@ -29,7 +31,6 @@ function App() {
   const handleTagsChange = (e) => {
     setTags(e.target.value);
   };
-
 
   const uploadImage = async () => {
     if (!file) return;
@@ -70,12 +71,14 @@ function App() {
               onChange={(e) => setPrompt(e.target.value)}
           />
           <button onClick={handleChatGPTRequest}>Send to ChatGPT</button>
-          <p>{chatGPTResponse}</p>
+
+          {/* Show loading spinner or message when loading */}
+          {loading ? <p>Loading...</p> : <p>{chatGPTResponse}</p>}
         </div>
 
         <div>
           <h3>Upload Image</h3>
-          <input type="file" onChange={handleFileChange}/>
+          <input type="file" onChange={handleFileChange} />
           <input
               type="text"
               placeholder="Tags (comma separated)"
@@ -100,10 +103,8 @@ function App() {
             ))}
           </ul>
         </div>
-
       </div>
   );
 }
 
 export default App;
-
