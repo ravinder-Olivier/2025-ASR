@@ -1,10 +1,8 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
 const  bodyParser = require("body-parser");
-
 const app = express();
 const port = 5000;
 const filepath = "./public/db.json";
@@ -19,19 +17,26 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI,
 });
 
+
+function scripter(resprompt) {
+  return ("This is a request being called from an application that is designed to create visual schedules and social stories for autistic children. This application will use this response to create a visual schedule / social story. I need a response corresponding to the prompt:" + resprompt + ". That is in the format of a json array. This should specify which image to use when given"+images.toString()+". Using those images make a json array that can be used in a program to combine these images and text into the final image. Raw JSON format directly to be used in a program. Identify which image to use based on the tag, however give me the location of the image in the response. Each filename has a corresponding tag, use the tags to understand what the image is. Use the filename when referencing it into the JSON. ALSO ONLY JSON NO BULLSHIT. ONLY JSON NO BULLSHIT.")
+}
+
 // Handle ChatGPT request
 app.post("/chatgpt", async (req, res) => {
   const { prompt } = req.body; // No need for 'await' here, as it's synchronous
 
   if (!prompt) {
     return res.status(400).send("No prompt provided");
+    console.log("yes")
   }
 
   try {
     // Send request to OpenAI's API
+    console.log(prompt)
     const response = await openai.chat.completions.create({
       model: "gpt-4", // Ensure the model name is correct
-      messages: [{ role: "user", content: prompt }],
+      messages: [{ role: "user", content: scripter(prompt) }],
     });
 
     // Send response from OpenAI back to frontend

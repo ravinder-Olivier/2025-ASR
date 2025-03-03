@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 function App() {
   const [file, setFile] = useState(null);
   const [tags, setTags] = useState("");
@@ -70,6 +71,7 @@ function App() {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
           />
+          <br></br>
           <button onClick={handleChatGPTRequest}>Send to ChatGPT</button>
 
           {/* Show loading spinner or message when loading */}
